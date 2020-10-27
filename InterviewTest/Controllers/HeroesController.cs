@@ -37,13 +37,20 @@ namespace InterviewTest.Controllers
         [HttpGet("{id}", Name = "Get")]
         public Hero Get(int id)
         {
-            return this.heroes.FirstOrDefault();
+            return this.heroes[id];
         }
 
         // POST: api/Heroes
         [HttpPost]
         public void Post([FromBody] string value)
         {
+            if (value == "evolve")
+            {
+                for (int i = 0; i < heroes.Length; i++)
+                {
+                    heroes[i].evolve();
+                }
+            }
         }
 
         // PUT: api/Heroes/5
